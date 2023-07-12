@@ -20,26 +20,33 @@
  function solution(array $A ) : int| string{
 
     $N = range(1,100000);
-    $smallestPositiveInteger = null; 
-    if((min($A) < -100000 ) || (max($A) > 1000000)){
-        $smallestPositiveInteger =  "Invalid Input, input an array between -1,000,000 and 1,000,000";
-    }else{
+    $smallestPositiveInteger = null;
+    if(count($A) < 1){
 
-        foreach($N as $number){
-            if(!in_array($number, $A)){
-                $smallestPositiveInteger = $number;
-                break;
-            }else{
-    
-                // return -1 if the smallest positive integer is out range within $N
-                $smallestPositiveInteger = -1;
-            }
-        }
+       return  $smallestPositiveInteger = 'Input cannot be empty';
     }
-   return $smallestPositiveInteger;
+
+    if(count($A) >= 100000){
+       return  $smallestPositiveInteger = 'Numbers of arrays cannot exceed 100,000';
+    }
+
+
+    if((min($A) < -1000000 ) || (max($A) > 1000000)){
+       return  $smallestPositiveInteger =  "Invalid Input, input an array between -1,000,000 and 1,000,000";
+    }
+
+    foreach($N as $number){
+        if(!in_array($number, $A)){
+            $smallestPositiveInteger = $number;
+            break;
+        }
+        
+    }
+    return $smallestPositiveInteger;
     
 }
 
+echo solution([]);
 echo solution([1, 3, 6,4,1,2]);
 echo solution([1, 2,3]);
 echo solution([-2,-3]);
