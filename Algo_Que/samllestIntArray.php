@@ -20,20 +20,23 @@
  function solution(array $A ) : int| string{
 
     $N = range(1,100000);
-    $smallestPositiveInteger = null;
-    if(count($A) < 1){
 
-       return  $smallestPositiveInteger = 'Input cannot be empty';
+    $smallestPositiveInteger = null;
+
+    if(empty($A)){
+        return $smallestPositiveInteger = "input cannot be empty";
     }
+
+    if((min($A) < -1000000 ) || (max($A) > 1000000)){
+       return  $smallestPositiveInteger =  "Invalid Input, input an array between -1,000,000 and 1,000,000";
+    }
+
 
     if(count($A) >= 100000){
        return  $smallestPositiveInteger = 'Numbers of arrays cannot exceed 100,000';
     }
 
 
-    if((min($A) < -1000000 ) || (max($A) > 1000000)){
-       return  $smallestPositiveInteger =  "Invalid Input, input an array between -1,000,000 and 1,000,000";
-    }
 
     foreach($N as $number){
         if(!in_array($number, $A)){
